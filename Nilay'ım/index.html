@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ömer & Nilay</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Giriş Ekranı Stilleri */
+        #login-screen {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            transition: all 0.5s ease;
+        }
+
+        h2 { color: #333; margin-bottom: 20px; }
+        input {
+            padding: 10px;
+            width: 80%;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        input:focus { border-color: #e91e63; }
+        
+        button {
+            padding: 10px 30px;
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+        button:hover { transform: scale(1.05); background-color: #d81b60; }
+        .error-msg { color: red; font-size: 14px; display: none; margin-top: 10px; }
+
+        /* Ana İçerik Stilleri (Başlangıçta gizli) */
+        #main-content {
+            display: none;
+            width: 80%;
+            height: 80%;
+            animation: fadeIn 1s;
+        }
+
+        .header-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #e91e63;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Dosya Izgara Görünümü */
+        .folder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .folder-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .folder-item:hover { transform: translateY(-10px); }
+        
+        .folder-icon {
+            font-size: 80px;
+            color: #ffca28; /* Klasör sarısı */
+            margin-bottom: 10px;
+            text-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+
+        .folder-name {
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+            max-width: 140px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login-screen">
+        <div id="step-1">
+            <h2>Dünyadaki en güzel kız kimdir?</h2>
+            <input type="text" id="ans1" placeholder="Cevabını yaz...">
+            <br>
+            <button onclick="checkStep1()">Devam Et</button>
+            <p class="error-msg" id="err1">Yanlış cevap! İpucu: N...y</p>
+        </div>
+
+        <div id="step-2" style="display: none;">
+            <h2>Peki bu kıza kim sırılsıklam aşık?</h2>
+            <input type="text" id="ans2" placeholder="İsmini yaz...">
+            <br>
+            <button onclick="checkStep2()">Giriş Yap ❤️</button>
+            <p class="error-msg" id="err2">Yanlış cevap! İpucu: Ö...r</p>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <h1 class="header-title">Ömer ❤️ Nilay Anı Arşivi</h1>
+        <div class="folder-grid">
+            
+            <div class="folder-item" onclick="openFolder('ani1.html')">
+                <i class="fas fa-folder folder-icon"></i>
+                <span class="folder-name">1. İlk Konuşmalarımız</span>
+            </div>
+
+            <div class="folder-item" onclick="openFolder('ani2.html')">
+                <i class="fas fa-folder folder-icon"></i>
+                <span class="folder-name">2. Bana kendini attığın ilk fotoğraf</span>
+            </div>
+
+            <div class="folder-item" onclick="openFolder('ani3.html')">
+                <i class="fas fa-folder folder-icon"></i>
+                <span class="folder-name">3. Sana ilk hediyem</span>
+            </div>
+
+            <div class="folder-item" onclick="openFolder('ani4.html')">
+                <i class="fas fa-folder folder-icon"></i>
+                <span class="folder-name">4. Senin bana ilk ve dünyalar güzeli hediyen</span>
+            </div>
+
+            <div class="folder-item" onclick="openFolder('ani5.html')">
+                <i class="fas fa-folder folder-icon"></i>
+                <span class="folder-name">5. Tatlı mı tatlı çocukluk fotoğrafların</span>
+            </div>
+
+            <div class="folder-item" onclick="openFolder('ani6.html')">
+                <i class="fas fa-folder folder-icon"></i>
+                <span class="folder-name">6. İlk buluşmamızdaki mesajlaşmamız ve +1</span>
+            </div>
+
+            <div class="folder-item" onclick="openFolder('ani7.html')">
+                <i class="fas fa-folder folder-icon"></i>
+                <span class="folder-name">7. Dünyanın ennnnn güzel kızı</span>
+            </div>
+
+            <div class="folder-item" onclick="openFolder('ani8.html')">
+                <i class="fas fa-folder folder-icon"></i>
+                <span class="folder-name">8. İlk fotoğraflarımız</span>
+            </div>
+
+        </div>
+    </div>
+
+   <script>
+        // Sayfa ilk yüklendiğinde çalışır
+        window.onload = function() {
+            // Tarayıcı hafızasında "girisYapildi" notu var mı kontrol et
+            if (sessionStorage.getItem('girisYapildi') === 'true') {
+                // Eğer daha önce giriş yapılmışsa soruları gizle, içeriği göster
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('step-1').style.display = 'none'; // Emin olmak için
+                document.getElementById('main-content').style.display = 'block';
+                document.body.style.backgroundColor = "#fff0f5";
+            }
+        };
+
+        function checkStep1() {
+            var answer = document.getElementById('ans1').value.trim().toLowerCase();
+            // Cevap: nilay veya nlay
+            if (answer === 'nilay' || answer === 'nlay') {
+                document.getElementById('step-1').style.display = 'none';
+                document.getElementById('step-2').style.display = 'block';
+            } else {
+                document.getElementById('err1').style.display = 'block';
+            }
+        }
+
+        function checkStep2() {
+            var answer = document.getElementById('ans2').value.trim().toLowerCase();
+            // Cevap: ömer veya omer
+            if (answer === 'ömer' || answer === 'omer') {
+                
+                // DOĞRU CEVAP VERİLDİĞİNDE HAFIZAYA KAYDET
+                sessionStorage.setItem('girisYapildi', 'true');
+
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                document.body.style.backgroundColor = "#fff0f5";
+            } else {
+                document.getElementById('err2').style.display = 'block';
+            }
+        }
+
+        function openFolder(pageName) {
+            window.location.href = pageName;
+        }
+    </script>
+</body>
+</html>
