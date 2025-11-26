@@ -6,17 +6,18 @@
     <title>Ömer & Nilay</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
+        body body {
+    margin: 0;
+    padding: 20px 0; /* Mobilde kenarlara yapışmasın diye biraz boşluk */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    min-height: 100vh; /* Yükseklik en az ekran kadar olsun ama uzayabilsin */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* overflow: hidden;  <-- BU SATIRI SİLDİK ARTIK KAYABİLİR */
+    overflow-y: auto; /* Sadece dikey kaydırmaya izin ver */
+}
 
         /* Giriş Ekranı Stilleri */
         #login-screen {
@@ -223,4 +224,5 @@
         }
     </script>
 </body>
+
 </html>
